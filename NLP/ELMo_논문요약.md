@@ -11,7 +11,7 @@ Status: Completed
 > 5 ~ 5.3 한유경  
 > 5.4 ~ 6 송경민 
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled.png)
+![./ELMo_논문요약/Untitled.png](./ELMo_논문요약/Untitled.png)
 
 
 # 1. Introduction
@@ -82,7 +82,7 @@ ELMo는..
 
 N개의 순차적인 token이 주어졌을 때, 포워드 언어 모델(Forward LM)을 다음과 같이 계산
 - $(t_1,\dots,t_{k-1})$이 주어졌을 때 token $t_k$가 나타날 확률을 모두 곱해서 전체 입력 확률을 구함
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_BC1A7500C964-1.jpeg](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_BC1A7500C964-1.jpeg)
+![./ELMo_논문요약/IMG_BC1A7500C964-1.jpeg](./ELMo_논문요약/IMG_BC1A7500C964-1.jpeg)
 - 문맥에 의존적이지 않은 $k$번째 단어의 representation을 $x^{LM}_k$라고 하면, 이걸 forward LSTM의 $L$개 층에 통과시킴
 - 입력 위치 = $k$, 현재 layer = $j(1,\dots, L)$ 일 때, output? 문맥의존 representation, $\overrightarrow {h}^{LM}_{k, j}$
 - 꼭대기층의 $\overrightarrow {h}^{LM}_{k, L}$은 Softmax layer를 사용해서 다음 token $t_{k+1}$ 을 예측
@@ -91,7 +91,7 @@ N개의 순차적인 token이 주어졌을 때, 포워드 언어 모델(Forward 
 
 Forward LM과 비슷하지만, 반대로 흘러감(미래의 representation을 기반으로 현재 representation 유추)
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_5B4ED42F69F6-1.jpeg](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_5B4ED42F69F6-1.jpeg)
+![./ELMo_논문요약/IMG_5B4ED42F69F6-1.jpeg](./ELMo_논문요약/IMG_5B4ED42F69F6-1.jpeg)
 
 - $(t_{k+1}, \dots, t_N)$이 주어졌을 때 token $t_k$에 대해서 $\overleftarrow {h}^{LM}_{k, j}$를 $j$층에서 output으로 만듦
 
@@ -99,7 +99,7 @@ Forward LM과 비슷하지만, 반대로 흘러감(미래의 representation을 �
 
 biLM은 forward & backward LM을 합침. 두 방향의 log likelihood를 최대화 시키는 방향으로 학습 진행
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_9B3A4EFF1724-1.jpeg](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/IMG_9B3A4EFF1724-1.jpeg)
+![./ELMo_논문요약/IMG_9B3A4EFF1724-1.jpeg](./ELMo_논문요약/IMG_9B3A4EFF1724-1.jpeg)
 
 - token representations = $\Theta_x$
 - Softmax layer = $\Theta_S$
@@ -109,15 +109,15 @@ biLM은 forward & backward LM을 합침. 두 방향의 log likelihood를 최대�
 ## 3.2 ELMo
 
 ELMo는 biLM에서 등장하는 중간 매체 layer의 표현들을 특별하게 합친 것이다. 각 토큰 tk에 대하여, L개의 layer인 BiLM은 2L+1개의 표현을 계산한다.
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%201.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%201.png)
+![./ELMo_논문요약/Untitled%201.png](./ELMo_논문요약/Untitled%201.png)
 이 때, hLMk,0은 token layer를 뜻하고, hLMk,j=[h→LMk,j;h←LMk,j]는 biLSTM layer를 의미한다. 그래서 모든 layer에 존재하는 representation을 R인 single vector로 혼합하는 과정을 거친다:
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%202.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%202.png)
+![./ELMo_논문요약/Untitled%202.png](./ELMo_논문요약/Untitled%202.png)
 예시로, 가장 간단한 ELMo 버전은 가장 높은 layer를 취하는 방법이 있다:
 E(Rk)=hLMk,L이 ELMo는 task에 맞게 또 변형될 수 있다.
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%203.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%203.png)
+![./ELMo_논문요약/Untitled%203.png](./ELMo_논문요약/Untitled%203.png)
 stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELMo vector의 크기를 조절하는 역할을 맡는다.
 위의 수식을 도식화를 통해 살펴보자면
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%204.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%204.png)
+![./ELMo_논문요약/Untitled%204.png](./ELMo_논문요약/Untitled%204.png)
 해당 그림과 같이 각 Bi-LSTM Layer들을 통해 나오는 hidden representation을 task의 비율에 맞추어 더해 ELMo vector를 만드는 것이다.
 즉 과정을 다시 정리해보면
 (1) BiLSTM layer의 꼭대기층의 token이 softmax layer를 통해 다음 token을 예측하도록 훈련시킨다.
@@ -147,7 +147,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 
 6개의 NLP task 밴치마크에 대하여 단지 ELMo를 추가하는 것만으로도 SOTA(최고성능) 달성
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%205.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%205.png)
+![./ELMo_논문요약/Untitled%205.png](./ELMo_논문요약/Untitled%205.png)
 - “increase” 열은 baseline에 비해 절대적 – 상대적 향상을 나타냄.
 1. **Question answering(질의응답)**
     - Dataset : Stanford Question Answering Dataset(SQuAD)  : 10만개 이상의 위키피디아 질문-답 쌍을 크라우드 소싱한 데이터셋
@@ -186,7 +186,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 λ 값이 매우 작은 경우 ( λ = 0.001) : 각 층에 대한 weight 값이 다양하게 적용됨
 (the regularization parameter  is also important, as large values such as  = 1 effectively reduce the weighting function to a simple average over the layers, while smaller values (e.g., = 0.001) allow the layer weights to vary.)
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%206.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%206.png)
+![./ELMo_논문요약/Untitled%206.png](./ELMo_논문요약/Untitled%206.png)
 
                           [마지막 층의 결과만 사용(Last Only)  Vs  모든 층의 결과 사용(All layers)]
 
@@ -199,7 +199,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 
 현재 논문에서 사용한 모든 구조에서는 가장 낮은 층(lowest layer)의 입력에만 ELMo representation을 적용하지만, 특정 task에 대해서는 output 에도 ELMo representation을 추가하는 것이 성능을 향상시킬 수 있음
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%207.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%207.png)
+![./ELMo_논문요약/Untitled%207.png](./ELMo_논문요약/Untitled%207.png)
 
 1) SQuAD와 SNLI의 경우, input과 output 모두에 ELMo representation을 추가했을 때 성능이 우수
 -SNLI, SQuAD 모두 biRNN 이후에 Attention을 사용하기 때문에, output에 ELMo representation을 추가하는 것이 성능을 향상
@@ -209,7 +209,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 
 - biLM의 문맥을 고려한 representation을 추가
     - 다양한 NLP task에 유용한 정보를 표현 가능  → 문맥을 고려한 representation은 특정한 단어를 사용되는 문맥에 따라서 서로 다르게 표현함
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%208.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%208.png)
+![./ELMo_논문요약/Untitled%208.png](./ELMo_논문요약/Untitled%208.png)
 
                               [문맥을 고려하지 않는 단어 임베딩인 GloVe와 ELMo를 비교]
 
@@ -221,7 +221,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 - (context에 따라 얻어지는 "play"에 대한 벡터가 다름)
 - WSD (Word-Sense Disambiguation) task에 따른 performance
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%209.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%209.png)
+![./ELMo_논문요약/Untitled%209.png](./ELMo_논문요약/Untitled%209.png)
 
 1) BiLM이 CoVe biLSTM보다 성능이 우수함
 
@@ -233,7 +233,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 
 - POS(Part-Of-Speech) task로 token의 품사를 확인하는 task
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%2010.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/Untitled%2010.png)
+![./ELMo_논문요약/Untitled%2010.png](./ELMo_논문요약/Untitled%2010.png)
 
 1) BiLM이 CoVe 인코더보다 정확도 더 높음 
 
@@ -245,7 +245,7 @@ stask는 softmax-normalized weight를 의미, γtask는 task model을 전체 ELM
 
 ### 5.4 Sample efficiency
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/F382CF4E-F2E2-4705-95AA-B5877EC17FFA.jpeg](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/F382CF4E-F2E2-4705-95AA-B5877EC17FFA.jpeg)
+![./ELMo_논문요약/F382CF4E-F2E2-4705-95AA-B5877EC17FFA.jpeg](./ELMo_논문요약/F382CF4E-F2E2-4705-95AA-B5877EC17FFA.jpeg)
 
 모델에 ELMo를 추가하면 매개변수 업데이트 횟수와 전체적인 훈련 세트 크기 측면에서 모두 효율성이 증가함.
 
@@ -256,7 +256,7 @@ SRL의 경우에서는 ELMo를 사용한 model이 training dataset의 단 1%을 
 
 ### 5.5 Visualization of learned weights
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/3D3C74D2-EDE1-4C5E-90DC-4DDCEEC40608.jpeg](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%20fc704c4b96684d0b92af3734108a4710/3D3C74D2-EDE1-4C5E-90DC-4DDCEEC40608.jpeg)
+![./ELMo_논문요약/3D3C74D2-EDE1-4C5E-90DC-4DDCEEC40608.jpeg](./ELMo_논문요약/3D3C74D2-EDE1-4C5E-90DC-4DDCEEC40608.jpeg)
 
 소프트맥스 정규화된 학습 계층 가중치를 시각화한 것임.
 Input Layer에서는 첫번째 biLSTM layer를 선호함. 
