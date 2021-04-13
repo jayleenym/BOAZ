@@ -5,8 +5,8 @@ Assign: 김유진, @seoromin, 한유경, @rod-y, @jayleenym
 Status: Completed
 
 > 논문 정리 역할 분담
-> 1 ~ 2  김유진 
-> 3.1 ~ 3.2 @rod-y  
+> 1 ~ 2  김유진  
+> 3.1 ~ 3.2 @rod-y   
 > 3.3 ~ 4.1 @seoromin  
 > 4.2 @jayleenym  
 > 5 ~ 6 한유경
