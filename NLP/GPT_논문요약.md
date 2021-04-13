@@ -1,20 +1,17 @@
-# 논문요약
+# GPT 논문요약
 
-Assign: 예진 문, Yujin ­Kim, 상민 이, 유경 한, KM S
-Date: Apr 8, 2021 → Apr 11, 2021
+Date: Apr 8, 2021 → Apr 11, 2021  
+Assign: 김유진, @seoromin, 한유경, @rod-y, @jayleenym  
 Status: Completed
 
 > 논문 정리 역할 분담
-# 1 ~ 2  @Yujin ­Kim 
-# 3.1 ~ 3.2 @KM S  
-# 3.3 ~ 4.1 @상민 이 
-# 4.2 @예진 문 
-# 5 ~ 6 @유경 한
+> 1 ~ 2  김유진 
+> 3.1 ~ 3.2 @rod-y  
+> 3.3 ~ 4.1 @seoromin  
+> 4.2 @jayleenym  
+> 5 ~ 6 한유경
 
 # 1. Introduction
-
----
-
 대부분의 딥러닝 모델은 labeled된 데이터를 바탕으로 지도학습을 하는데, 이는 레이블이 지정되지 않은 데이터(unlabeled data)보다 훨씬 적은 수이기 때문에 unlabeled data의 언어 정보를 활용한다면 훈련에 필요한 시간과 비용을 절약할 수 있다. 
 
 but, unlabeled data에 대하여 단어 수준 이상의 정보를 활용하는 것이 힘든 이유는 크게 두가지 문제점 때문이다. 
@@ -31,11 +28,10 @@ but, unlabeled data에 대하여 단어 수준 이상의 정보를 활용하는 
 
 또한, 해당 모델에서는 Transformer 구조를 사용했는데, 다양한 task에서 잘 작동할 뿐만 아니라 텍스트의 길이가 길어지면, 효과가 안 좋아지는 (long term memory dependency) RNN 구조의 문제점도 해결할 수 있기 때문이다. → Transformer의 스타일 덕분에 사전 학습된 모델의 아키텍처를 최소한으로 변형하면서 효과적으로 fine-tuning이 가능하다. 
 
-네가지 유형의 language understanding task에 대한 평가를 수행했고, 범용모델이 각 작업에 특화된 모델의 성능을 능가했음. 
+네 가지 유형의 language understanding task에 대한 평가를 수행했고, 범용모델이 각 작업에 특화된 모델의 성능을 능가했음. 
+
 
 # 2. Related work
-
----
 
 **Semi-supervised learning for NLP**
 
@@ -53,8 +49,6 @@ GPT와 가장 유사한 연구는 신경망을 언어모델링 목적함수를 �
 
 # 3. Framework
 
----
-
 학습은 두 단계로 구성됨. 
 1. 대규모 텍스트 말뭉치에서 대용량 언어 모델 학습하는 것
 2. fine-tuning 단계로, 라벨링된 데이터를 사용하여 discriminative task에 모델을 적용
@@ -63,14 +57,14 @@ GPT와 가장 유사한 연구는 신경망을 언어모델링 목적함수를 �
 
 레이블링 되지 않은 말뭉치의 tokens U = {u1, . . . , un}가 주어지면, standard LM을 사용해 다음과 같은 likelihood를 최대화하는 방향으로 학습 진행
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled.png)
-
+![./GPT_논문요약/Untitled.png](./GPT_논문요약/Untitled.png)
+약
 식 1) k=윈도우 크기, P=파라미터 θ에 대해 계산됨, 모든 파라미터는 SGD방식으로 학습됨.
 
 transformer의 변형 중 하나인 multi-layer transformer decoder를 사용!
 multi-headed self-attention 연산을 모든 입력 토큰에 대해서 수행하고, 해당 결과를 position-wise feedforward layer의 입력으로 제공
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%201.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%201.png)
+![./GPT_논문요약/Untitled%201.png](./GPT_논문요약/Untitled%201.png)
 
 식 2) U=token의 context vector, n=레이어의 개수, W_e=토큰을 임베딩하는 matrix, W_p=position embedding matrix
 
@@ -85,13 +79,13 @@ multi-headed self-attention 연산을 모든 입력 토큰에 대해서 수행�
 입력들은 pre-trained 된 모델의 입력으로 제공되고 마지막 transformer block의 출력인 h_l_m으로 출력됨. 
 이 출력은 W_y를 파라미터로 하는 linear output layer의 입력으로 제공되어 y(=레이블)를 예측하게 됨.
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%202.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%202.png)
+![./GPT_논문요약/Untitled%202.png](./GPT_논문요약/Untitled%202.png)
 
 식 3)
 
 식 4를 최소화하도록 학습
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%203.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%203.png)
+![./GPT_논문요약/Untitled%203.png](./GPT_논문요약/Untitled%203.png)
 
 식 4)
 
@@ -99,7 +93,7 @@ Language modeling을 fine-tuning 과정에서 보조 objective로 사용했을 �
 
 weight λ에 대해 식 5와 같은 방식으로 최적화 진행
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%204.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%204.png)
+![./GPT_논문요약/Untitled%204.png](./GPT_논문요약/Untitled%204.png)
 
 식 5)
 
@@ -107,7 +101,7 @@ weight λ에 대해 식 5와 같은 방식으로 최적화 진행
 
 ## 3.3 Task-specific input transformations
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%205.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%205.png)
+![./GPT_논문요약/Untitled%205.png](./GPT_논문요약/Untitled%205.png)
 
 text classification과 같은 tast들은 위에서 언급한 방법대로 할 수 있다. 하지만 question answering이나 textual entailment는 여러 개의 문장이 필요하기 때문에, Figure 1처럼 delimiter로 각 sentence를 구분하여 하나로 연결하는 방식을 사용한다
 
@@ -123,13 +117,13 @@ Quenstion Answering and Commonsense Reasoning : 문맥 문서 z, 질문 q, 가�
 
 ## 4.1 Setup
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%206.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%206.png)
+![./GPT_논문요약/Untitled%206.png](./GPT_논문요약/Untitled%206.png)
 
 Unsupervised pre-training : dataset으로 다양한 분야의 미출판 책에 대한 내용을 포함하는 BooksCorpus를 사용. alternative dataset은 ELMO에서 사용한 Word Bechmark
 
 Model specifications:
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%207.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%207.png)
+![./GPT_논문요약/Untitled%207.png](./GPT_논문요약/Untitled%207.png)
 
 Fine-tunning details : Unsupervised pre-training와 hyperparameter 동일. p = 0.1의 dropout 추가
 
@@ -141,7 +135,7 @@ supervised task(자연어추론NLI, 질의응답, 의미 유사성, 문서분류
 
 ### Natural Language Inference - 자연어 추론
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%208.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%208.png)
+![./GPT_논문요약/Untitled%208.png](./GPT_논문요약/Untitled%208.png)
 
 - 문맥적 함의 알아내는 것, 한 쌍의 문장들 읽고 entailment, contradiction, neutral 인지 관계 파악
 
@@ -159,7 +153,7 @@ supervised task(자연어추론NLI, 질의응답, 의미 유사성, 문서분류
 
 ### Question answering and commonsense reasoning - 질의 응답, 상식적 추론
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%209.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%209.png)
+![./GPT_논문요약/Untitled%209.png](./GPT_논문요약/Untitled%209.png)
 
 - RACE 데이터셋(중고등학교 영어 시험 지문 + 질문) 사용[5.7%]
 - [Story Cloze Test](https://www.cs.rochester.edu/nlp/rocstories/) [8.9%]
@@ -168,7 +162,7 @@ supervised task(자연어추론NLI, 질의응답, 의미 유사성, 문서분류
 
 ### Semantic Similarity - 의미 유사성
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2010.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2010.png)
+![./GPT_논문요약/Untitled%2010.png](./GPT_논문요약/Untitled%2010.png)
 
 - 두 문장이 비슷하냐 아니냐 by rephrasing 알아보고, p이면 q이다 논리 이해, 문장구조 모호성 알아보고
 - Microsoft Paraphrase corpus(MRPC), Quora Question Pairs(QQP), Semantic Textual Similarity benchmark(STS-B) 데이터 사용
@@ -177,7 +171,7 @@ supervised task(자연어추론NLI, 질의응답, 의미 유사성, 문서분류
 
 ### Classification - 분류
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2011.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2011.png)
+![./GPT_논문요약/Untitled%2011.png](./GPT_논문요약/Untitled%2011.png)
 
 - Corpus of Linguistic Acceptability(CoLA): 문장의 문법적 오류 여부에 대한 전문가의 평가 + 학습된 모델의 언어적 편향 테스트 → 45.4
 - Stanford Sentiment Treebank(SST-2): 표준 이진 분류 → 91.3% 정확도 (나름 경쟁력 있음)
@@ -193,7 +187,7 @@ STS-B(5.7k train ex) 같은 작은 데이터셋 ~ SNLI(550k train ex) 같은 큰
 
 ---
 
-![%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2012.png](%E1%84%82%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%8B%E1%85%A3%E1%86%A8%208284db2abf4b4b09aadabf8973340814/Untitled%2012.png)
+![./GPT_논문요약/Untitled%2012.png](./GPT_논문요약/Untitled%2012.png)
 
 ### 1. Impact of number of layers transferred
 

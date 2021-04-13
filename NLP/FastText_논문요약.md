@@ -1,20 +1,17 @@
-# 논문 요약
+# FastText 논문요약
 
-날짜: Mar 12, 2021 → Mar 15, 2021
-배정: 상민 이, 유경 한, KM S, Yujin ­Kim, 예진 문
+날짜: Mar 12, 2021 → Mar 15, 2021  
+배정: 김유진, 이상민, 한유경, 송경민, 문예진  
 상태: 완료
 
-- 논문 정리 역할 분담
 
-    #Abstract, 1~3 : @유경 한 
+> 논문 정리 역할 분담  
+> 1 ~ 3 한유경  
+> 4 문예진  
+> 5.1 ~ 5.3 김유진   
+> 5.4 ~ 5.6 송경민  
+> 6 ~ conclusion 이상민 
 
-    #4 : @예진 문 
-
-    #5.1 ~ 5.3: @Yujin ­Kim 
-
-    #5.4~5.6: @KM S 
-
-    #6~conclusion: @상민 이 
 
 # Enriching Word Vectors with Subword Information
 
@@ -24,8 +21,6 @@
 Facebook AI Research
 
 ## 1. Abstract & Introduction
-
----
 
 1. **Existing problems**
 
