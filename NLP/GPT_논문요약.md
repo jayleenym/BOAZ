@@ -1,14 +1,14 @@
 # GPT 논문요약
 
 Date: Apr 8, 2021 → Apr 11, 2021  
-Assign: 김유진, @seoromin, 한유경, @rod-y, @jayleenym  
+Assign: 김유진, 이상민, 한유경, 송경민, 문예진  
 Status: Completed
 
-> 논문 정리 역할 분담
-> 1 ~ 2  김유진 
-> 3.1 ~ 3.2 @rod-y  
-> 3.3 ~ 4.1 @seoromin  
-> 4.2 @jayleenym  
+> 논문 정리 역할 분담  
+> 1 ~ 2  김유진  
+> 3.1 ~ 3.2 송경민  
+> 3.3 ~ 4.1 이상민  
+> 4.2 문예진  
 > 5 ~ 6 한유경
 
 # 1. Introduction
@@ -58,7 +58,6 @@ GPT와 가장 유사한 연구는 신경망을 언어모델링 목적함수를 �
 레이블링 되지 않은 말뭉치의 tokens U = {u1, . . . , un}가 주어지면, standard LM을 사용해 다음과 같은 likelihood를 최대화하는 방향으로 학습 진행
 
 ![./GPT_논문요약/Untitled.png](./GPT_논문요약/Untitled.png)
-약
 식 1) k=윈도우 크기, P=파라미터 θ에 대해 계산됨, 모든 파라미터는 SGD방식으로 학습됨.
 
 transformer의 변형 중 하나인 multi-layer transformer decoder를 사용!
@@ -112,8 +111,6 @@ Similarity : 두 개의 텍스트 사이에 순서가 없으므로 텍스트 두
 Quenstion Answering and Commonsense Reasoning : 문맥 문서 z, 질문 q, 가능한 답변 ak라고 하면, [z ; q; $; ak]로 연결되고 입력의 갯수는 답변의 갯수만큼 생성된다.
 
 # 4. Experiments
-
----
 
 ## 4.1 Setup
 
@@ -185,8 +182,6 @@ STS-B(5.7k train ex) 같은 작은 데이터셋 ~ SNLI(550k train ex) 같은 큰
 
 # 5. Analyis
 
----
-
 ![./GPT_논문요약/Untitled%2012.png](./GPT_논문요약/Untitled%2012.png)
 
 ### 1. Impact of number of layers transferred
@@ -196,7 +191,7 @@ STS-B(5.7k train ex) 같은 작은 데이터셋 ~ SNLI(550k train ex) 같은 큰
 - Transfer 하는 층의 개수가 많을수록 성능이 향상
 - Layer 12 이후로는 성능이 수렴하는 양상을 보임
 
- →pre-trained model의 각 층이 target task를 해결하기 위한 다양한 특성들을 각각 학습한다는 것을 알 수 있다.
+ → pre-trained model의 각 층이 target task를 해결하기 위한 다양한 특성들을 각각 학습한다는 것을 알 수 있다.
 
 ### 2. Zero-shot Behaviors
 
@@ -216,7 +211,7 @@ Language model pre-training이 효과적인 이유에 대한 한 가설은 langu
 
 데이터셋이 큰 경우 이런 보조적인 objective의 영향을 많이 받지만, 작은 데이터셋의 경우는 영향을 적게 받는다는 것을 알 수 있다.(데이터셋이 클수록(QQP, MNLI, QNLI, RTE) auxiliary task가 성능 개선에 영향이 더 크며, 작을수록(CoLA, SST2, MRPC, STSB) auxiliary task없이 학습하는 것이 오히려 나음)
 
-      →Fine-tuning은 데이터 셋이 클 때 더 효과적임
+      → Fine-tuning은 데이터 셋이 클 때 더 효과적임
 
 - Transformer의 사용 여부 :
 
@@ -227,8 +222,6 @@ Language model pre-training이 효과적인 이유에 대한 한 가설은 langu
 기존의 모델을 바로 supervised target task에 학습시킨 경우 성능을 확인했다. Pre-training을 진행하지 않은 경우, 모든 task에 대해서 성능이 떨어진다는 것(약 15%)을 확인할 수 있었다. (여기서 pre-training을 사용하지 않는다는 것은 unsupervised pre-training에 사용되는 구조를 모두 넘겨버리는 것을 말한다. 즉, supervised부분만 사용하는 것)
 
 # 6. Conclusion
-
----
 
 - 본 논문은 생성적 사전학습과 특정과제에 특화된 미세조정을 통해 학습된, 과제에 대해 별다른 지식이 없으며 자연어이해 능력이 뛰어난 단일 모델(framework)를 소개한다.
 - 넓은 분야의 다양한 말뭉치에 대해 사전학습을 진행하여 중요한 일반지식과 질답, 의미유사성 평가, 함의 확인, 문서분류 등의 task에서 성공적으로 전이되는 장거리 의존성을 처리하는 능력을 학습하여 12개 중 9개의 과제에 대해 state-of-the-art를 달성하였다.
