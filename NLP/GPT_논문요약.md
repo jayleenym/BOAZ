@@ -1,14 +1,14 @@
 # GPT 논문요약
 
 Date: Apr 8, 2021 → Apr 11, 2021  
-Assign: 김유진, @seoromin, 한유경, @rod-y, @jayleenym  
+Assign: 김유진, 이상민, 한유경, 송경민, 문예진  
 Status: Completed
 
 > 논문 정리 역할 분담  
-> 1 ~ 2  김유진  
-> 3.1 ~ 3.2 @rod-y   
-> 3.3 ~ 4.1 @seoromin  
-> 4.2 @jayleenym  
+> 1 ~ 2 김유진  
+> 3.1 ~ 3.2 송경민   
+> 3.3 ~ 4.1 이상민  
+> 4.2 문예진  
 > 5 ~ 6 한유경
 
 # 1. Introduction
