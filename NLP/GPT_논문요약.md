@@ -6,15 +6,9 @@ Status: Completed
 
 > 논문 정리 역할 분담  
 > 1 ~ 2  김유진  
-<<<<<<< HEAD
 > 3.1 ~ 3.2 송경민  
 > 3.3 ~ 4.1 이상민  
 > 4.2 문예진  
-=======
-> 3.1 ~ 3.2 @rod-y   
-> 3.3 ~ 4.1 @seoromin  
-> 4.2 @jayleenym  
->>>>>>> 8ca423f48c179abbb0496541ae2c4ee8a0967bd9
 > 5 ~ 6 한유경
 
 # 1. Introduction
@@ -228,7 +222,10 @@ Language model pre-training이 효과적인 이유에 대한 한 가설은 langu
 기존의 모델을 바로 supervised target task에 학습시킨 경우 성능을 확인했다. Pre-training을 진행하지 않은 경우, 모든 task에 대해서 성능이 떨어진다는 것(약 15%)을 확인할 수 있었다. (여기서 pre-training을 사용하지 않는다는 것은 unsupervised pre-training에 사용되는 구조를 모두 넘겨버리는 것을 말한다. 즉, supervised부분만 사용하는 것)
 
 # 6. Conclusion
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ba675cf8e9b0774cc84ac9d9265fe5719bc994a
 - 본 논문은 생성적 사전학습과 특정과제에 특화된 미세조정을 통해 학습된, 과제에 대해 별다른 지식이 없으며 자연어이해 능력이 뛰어난 단일 모델(framework)를 소개한다.
 - 넓은 분야의 다양한 말뭉치에 대해 사전학습을 진행하여 중요한 일반지식과 질답, 의미유사성 평가, 함의 확인, 문서분류 등의 task에서 성공적으로 전이되는 장거리 의존성을 처리하는 능력을 학습하여 12개 중 9개의 과제에 대해 state-of-the-art를 달성하였다.
 - 본 논문은 상당한 성능향상이 정말로 가능하며 어떤 모델(Transformers)과 dataset(장거리 의존성을 포함하는 텍스트)가 이 접근법에 가장 좋은지에 대한 조언을 제공한다.
