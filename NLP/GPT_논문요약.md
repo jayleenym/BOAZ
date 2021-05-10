@@ -6,9 +6,15 @@ Status: Completed
 
 > 논문 정리 역할 분담  
 > 1 ~ 2  김유진  
+<<<<<<< HEAD
 > 3.1 ~ 3.2 송경민  
 > 3.3 ~ 4.1 이상민  
 > 4.2 문예진  
+=======
+> 3.1 ~ 3.2 @rod-y   
+> 3.3 ~ 4.1 @seoromin  
+> 4.2 @jayleenym  
+>>>>>>> 8ca423f48c179abbb0496541ae2c4ee8a0967bd9
 > 5 ~ 6 한유경
 
 # 1. Introduction
